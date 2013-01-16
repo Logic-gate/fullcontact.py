@@ -18,7 +18,6 @@ setup(
     description='Simple Python interface for FullContact, using Requests',
     long_description=file.read(open('README.md', 'r')),
     packages=['fullcontact'],
-    namespace_packages=['fullcontact'],
     zip_safe=False,
     platforms='any',
     install_requires=[
