@@ -1,6 +1,6 @@
 # FullContact.py
 
-A simple Python interface for FullContact, using Requests.
+A simple Python interface for [FullContact](http://www.fullcontact.com/), using Requests.
 
 # Install
 
@@ -12,3 +12,7 @@ A simple Python interface for FullContact, using Requests.
 
     fc = FullContact('your_api_key')
     person_profile = fc.get(email='you@email.com')
+
+# FullContact API Documentation
+
+Check out FullContact's documentation [here](http://www.fullcontact.com/developer/docs/).
