@@ -23,8 +23,10 @@ Check out FullContact's documentation [here](http://www.fullcontact.com/develope
 
 # Tests
 
-To run the test suite, go to whatever directory the project is in, and:
+To run the test suite:
 
+    git clone git://github.com/garbados/fullcontact.py.git
+    cd fullcontact.py
     python setup.py test
 
 You'll be prompted for an API key. Enter a valid one, and all the tests will (as of this writing) pass.
