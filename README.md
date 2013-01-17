@@ -6,7 +6,7 @@ A simple Python interface for [FullContact](http://www.fullcontact.com/), using 
 
 In terminal:
 
-    pip install git+https://github.com/garbados/fullcontact.py.git
+    pip install fullcontact.py
 
 # Usage
 
