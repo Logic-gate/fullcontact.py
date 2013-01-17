@@ -4,9 +4,13 @@ A simple Python interface for [FullContact](http://www.fullcontact.com/), using 
 
 # Install
 
+In terminal:
+
     pip install git+https://github.com/garbados/fullcontact.py.git
 
 # Usage
+
+In your Python script:
 
     from fullcontact import FullContact
 
@@ -16,3 +20,11 @@ A simple Python interface for [FullContact](http://www.fullcontact.com/), using 
 # FullContact API Documentation
 
 Check out FullContact's documentation [here](http://www.fullcontact.com/developer/docs/).
+
+# Tests
+
+To run the test suite, go to whatever directory the project is in, and:
+
+    python setup.py test
+
+You'll be prompted for an API key. Enter a valid one, and all the tests will (as of this writing) pass.
