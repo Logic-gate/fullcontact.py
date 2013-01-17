@@ -27,6 +27,8 @@ setup(
     tests_require=[
         'Attest',
     ],
+    test_loader='attest:auto_reporter.test_loader',
+    test_suite='tests.fc_tests',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
