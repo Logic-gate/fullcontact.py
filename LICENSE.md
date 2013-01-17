@@ -10,11 +10,6 @@ met:
 * Redistributions of source code must retain the above copyright
   notice, this list of conditions and the following disclaimer.
 
-* Redistributions in binary form must reproduce the above
-  copyright notice, this list of conditions and the following
-  disclaimer in the documentation and/or other materials provided
-  with the distribution.
-
 * The names of the contributors may not be used to endorse or
   promote products derived from this software without specific
   prior written permission.
@@ -24,7 +19,7 @@ met:
   Author a break and let him sleep on your couch.
 
 * If you are caught in a dire situation wherein you only have 
-  enough time to save on person out of a group, and the Author 
+  enough time to save one person out of a group, and the Author 
   is a member of that group, you must save the Author.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
