@@ -15,7 +15,25 @@ In your Python script:
     from fullcontact import FullContact
 
     fc = FullContact('your_api_key')
-    person_profile = fc.get(email='you@email.com')
+    person_profile = f.get('person', email='you@email.com')
+    
+    '''
+	'person'
+    'disposable'
+    'normalizer' 
+    'deducer'
+    'similarity'
+    'stats'
+    'parser' 
+    'locationNormalizer'
+    'locationEnrichment'
+    'batch'
+    '''
+    #for batch
+    
+    fc = FullContact('your_api_key')
+	batch_order = [f.makeUrl('person', 'email=you@email.com'), f.makeUrl('normalizer','q=Your name')]
+	f.postBatch(batch_order)
 
 # FullContact API Documentation
 
