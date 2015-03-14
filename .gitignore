@@ -9,3 +9,4 @@ build/
 dist/
 venv/
 settings.py
+example_fullcontact_output.txt
