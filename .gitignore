@@ -2,6 +2,7 @@
 .*.swp
 *.egg
 *.egg-info
+.idea/
 docs/.build
 docs/_build
 build/
