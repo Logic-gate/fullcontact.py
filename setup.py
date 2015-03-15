@@ -25,10 +25,9 @@ setup(
     ],
     include_package_data=True,
     tests_require=[
-        'Attest',
+        'nose>=1.0',
     ],
-    test_loader='attest:auto_reporter.test_loader',
-    test_suite='tests.fc_tests',
+    test_suite='nose.collector',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
