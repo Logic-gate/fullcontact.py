@@ -26,7 +26,7 @@ class FullContact(object):
             'batch': 'batch.json'
         }
 
-    def api_get(self, endpoint, strict=False, **kwargs):
+    def api_get(self, endpoint, **kwargs):
         """ Makes a FullContact API call
 
         Formats and submits a request to the specified endpoint, appending
@@ -54,7 +54,6 @@ class FullContact(object):
 
         return r
 
-
     def _prepare_batch_url(self, b):
         """ Format a url to submit to the batch API
 
@@ -74,6 +73,26 @@ class FullContact(object):
         return batch_url
 
     def api_batch(self, batch_calls):
+        """ Submit a batch request to the fullcontact API
+
+        You may POST up to 20 requests per call the batch endpoint,
+        although this limit is not enforced by the function. Responding
+        to invalid requests will be handled by the API and should be
+        coded against outside this module.
+
+        Args:
+            batch_calls: a list of tuples of (str, dict) identifying
+                endpoint to make a GET request to as well as the
+                parameters to append to that request.
+
+        Returns:
+            A Requests object containing the results of all batched
+            requests contained in the batch_calls list.
+
+        Resources:
+            https://www.fullcontact.com/developer/docs/batch/
+
+        """
         payload = [self._prepare_batch_url(b) for b in batch_calls]
         h = {'content-type': 'application/json'}
         data = {'requests': payload}
