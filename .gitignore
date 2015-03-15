@@ -2,6 +2,7 @@
 .*.swp
 *.egg
 *.egg-info
+.coverage
 .idea/
 docs/.build
 docs/_build
