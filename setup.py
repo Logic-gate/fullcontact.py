@@ -10,11 +10,11 @@ from setuptools import setup
 
 setup(
     name='FullContact.py',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/garbados/fullcontact.py',
     license='MIT',
-    author=['Max Thayer','Amer Almadani'],
-    author_email=['garbados@gmail.com', 'mad_dev@linuxmail.org']
+    author=['Max Thayer', 'Amer Almadani', 'Brendan Maione-Downing'],
+    author_email=['garbados@gmail.com', 'mad_dev@linuxmail.org', 'b.maionedowning@gmail.com'],
     description='Simple Python interface for FullContact, using Requests',
     long_description=file.read(open('README.md', 'r')),
     packages=['fullcontact'],
@@ -25,10 +25,9 @@ setup(
     ],
     include_package_data=True,
     tests_require=[
-        'Attest',
+        'nose>=1.0',
     ],
-    test_loader='attest:auto_reporter.test_loader',
-    test_suite='tests.fc_tests',
+    test_suite='nose.collector',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
