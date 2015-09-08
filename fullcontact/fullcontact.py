@@ -53,7 +53,8 @@ class FullContact(object):
         """
 
         kwargs['apiKey'] = self.api_key  # always include API key
-        r = requests.get(self.base_url + self.get_endpoints[endpoint], params=kwargs)
+        ep = self.base_url + self.get_endpoints[endpoint]
+        r = requests.get(ep, params=kwargs)
 
         return r
 
@@ -106,6 +107,33 @@ class FullContact(object):
         param = {'apiKey': self.api_key}
         full_endpoint = self.base_url + self.post_endpoints['batch']
 
-        r = requests.post(full_endpoint, params=param, data=json.dumps(data), headers=h)
-
+        r = requests.post(full_endpoint,
+                          params=param,
+                          data=json.dumps(data),
+                          headers=h)
         return r
+
+    def query_emails(self, *emails):
+        """
+        Accept one or many email addresses, and place a single or batch query
+        for all to fetch contact information. Returns a list of results.
+        """
+        # TODO: Validate emails?
+        if len(emails) == 0:
+            raise ValueError("Must provide at least one email to use.")
+        elif len(emails) == 1:
+            # Single API call
+            r = self.api_get('person', email=emails[0]).json()
+            o = {emails[0]: r}
+        else:
+            # Batch API call
+            r = self.api_batch([('person', {'email': e}) for e in emails])
+            responses = r.json()['responses']
+            o = {}
+            for e in emails:
+                req = self._prepare_batch_url(('person', {'email': e}))
+                if req in responses:
+                    o[e] = responses[req]
+        # API returns 404 for absent data.. restful, but may break batch?
+        # r.raise_for_status()
+        return o
