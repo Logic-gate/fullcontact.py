@@ -1,8 +1,11 @@
 import json
 import logging
 import requests
-import urllib
-
+import sys
+if sys.version_info.major < 3:
+    import urllib
+else:
+    import urllib.parse as urllib
 
 log = logging.getLogger(__name__)
 
@@ -67,7 +70,11 @@ class FullContact(object):
         Returns:
             A formatted url to append to the batch request's payload.
         """
-        batch_url = self.base_url + self.get_endpoints[b[0]] + '?' + urllib.urlencode(b[1])
+        ep = self.get_endpoints[b[0]]
+        qu = urllib.urlencode(b[1])
+        batch_url = '{0}{1}?{2}'.format(self.base_url, ep, qu)
+        # batch_url = self.base_url + self.get_endpoints[b[0]] + '?' \
+        # + urllib.urlencode(b[1])
         log.debug('Prepared batch url: {}'.format(batch_url))
 
         return batch_url

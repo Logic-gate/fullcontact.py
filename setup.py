@@ -16,7 +16,7 @@ setup(
     author=['Max Thayer', 'Amer Almadani', 'Brendan Maione-Downing'],
     author_email=['garbados@gmail.com', 'mad_dev@linuxmail.org', 'b.maionedowning@gmail.com'],
     description='Simple Python interface for FullContact, using Requests',
-    long_description=file.read(open('README.md', 'r')),
+    long_description=open('README.txt', 'r').read(),
     packages=['fullcontact'],
     zip_safe=False,
     platforms='any',
