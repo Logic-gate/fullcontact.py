@@ -31,8 +31,8 @@ Changes introduced in version 0.0.3 are not backwards compatible.
     
     # for batched calls - a list of tuples like (endpoint, {params})
     >>> batch_calls = [
-            ('disposable', {'email', 'this-is-a-fake-email@fake.com'}),
-            ('person', {'email', 'email@gmail.com'),
+            ('disposable', {'email': 'this-is-a-fake-email@fake.com'}),
+            ('person', {'email': 'email@gmail.com'}),
             ...
         ]
     >>> r2 = fc.api_batch(batch_calls)
