@@ -1,47 +1,48 @@
-# FullContact.py
+FullContact.py
+==============
 
-A simple Python interface for [FullContact](http://www.fullcontact.com/), using Requests.
+A Python interface for the [FullContact API](http://docs.fullcontact.com/).
 
-# Install
+Installation
+------------
 
-In terminal:
+```
+pip install fullcontact.py
+```
 
-    pip install fullcontact.py
-    
-Or just include the fullcontact API class in your project. It's entirely self-contained.
+Usage
+-----
 
-# Warning
 
-Changes introduced in version 0.0.3 are not backwards compatible.
+```python
+>>> from fullcontact import FullContact
+>>> fc = FullContact('your_api_key')
 
-# Usage
+# returns a real requests object
+>>> r = fc.api_get('person', **{'email': 'you@email.com'})
+>>> r.status_code
+200
+>>> r.headers['x-rate-limit-remaining']
+'59'
+>>> r.json()
+{u'socialProfiles': [...], u'demographics': {...}, ... }
 
-    
-    >>> from fullcontact import FullContact
-    >>> fc = FullContact('your_api_key')
-  
-    # returns a real requests object
-    >>> r = fc.api_get('person', **{'email': 'you@email.com'})
-    >>> r.status_code
-    200
-    >>> r.headers['x-rate-limit-remaining']
-    '59'
-    >>> r.json()
-    {u'socialProfiles': [...], u'demographics': {...}, ... }
-    
-    # for batched calls - a list of tuples like (endpoint, {params})
-    >>> batch_calls = [
-            ('disposable', {'email', 'this-is-a-fake-email@fake.com'}),
-            ('person', {'email', 'email@gmail.com'),
-            ...
-        ]
-    >>> r2 = fc.api_batch(batch_calls)
-    >>>
+# for batched calls - a list of tuples like (endpoint, {params})
+>>> batch_calls = [
+        ('disposable', {'email': 'this-is-a-fake-email@fake.com'}),
+        ('person', {'email': 'email@gmail.com'}),
+        ...
+    ]
+>>> r2 = fc.api_batch(batch_calls)
+```
 
-# FullContact API Documentation
+Tests
+-----
 
-Check out FullContact's documentation [here](http://www.fullcontact.com/developer/docs/).
+A limited test suite is available. Run with `nosetests` after installing, or if
+you're installing directly via `setup.py` you can use Nose's setuptools
+extension like so:
 
-# Tests
-
-A limited test suite is available. Run with `nosetests` after installing, or if you're installing directly via `setup.py` you can use Nose's setuptools extension like so: `python setup.py install nosetests`
+```
+python setup.py install nosetests
+```
