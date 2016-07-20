@@ -2,7 +2,7 @@ import json
 import logging
 import requests
 import sys
-if sys.version_info.major < 3:
+if sys.version_info[0] < 3:
     import urllib
 else:
     import urllib.parse as urllib
