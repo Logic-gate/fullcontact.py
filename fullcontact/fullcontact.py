@@ -54,11 +54,9 @@ class FullContact(object):
                 module.
         """
 
-        kwargs['apiKey'] = self.api_key  # always include API key
-        ep = self.base_url + self.get_endpoints[endpoint]
-        r = requests.get(ep, params=kwargs)
-
-        return r
+        headers = {'X-FullContact-APIKey': self.api_key}
+        endpoint = self.base_url + self.get_endpoints[endpoint]
+        return requests.get(endpoint, params=kwargs, headers=headers)
 
     def _prepare_batch_url(self, b):
         """ Format a url to submit to the batch API
@@ -76,8 +74,6 @@ class FullContact(object):
         ep = self.get_endpoints[b[0]]
         qu = urllib.urlencode(b[1])
         batch_url = '{0}{1}?{2}'.format(self.base_url, ep, qu)
-        # batch_url = self.base_url + self.get_endpoints[b[0]] + '?' \
-        # + urllib.urlencode(b[1])
         log.debug('Prepared batch url: {}'.format(batch_url))
 
         return batch_url
@@ -104,16 +100,12 @@ class FullContact(object):
 
         """
         payload = [self._prepare_batch_url(b) for b in batch_calls]
-        h = {'content-type': 'application/json'}
-        data = {'requests': payload}
-        param = {'apiKey': self.api_key}
-        full_endpoint = self.base_url + self.post_endpoints['batch']
+        headers = {'content-type': 'application/json',
+                   'X-FullContact-APIKey': self.api_key}
+        data = json.dumps({'requests': payload})
+        endpoint = self.base_url + self.post_endpoints['batch']
 
-        r = requests.post(full_endpoint,
-                          params=param,
-                          data=json.dumps(data),
-                          headers=h)
-        return r
+        return requests.post(endpoint, data=data, headers=headers)
 
     def query_emails(self, *emails):
         """
