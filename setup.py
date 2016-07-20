@@ -11,12 +11,12 @@ from setuptools import setup
 setup(
     name='FullContact.py',
     version='0.0.3',
-    url='https://github.com/garbados/fullcontact.py',
+    url='https://github.com/fullcontact/fullcontact.py',
     license='MIT',
-    author=['Max Thayer', 'Amer Almadani', 'Brendan Maione-Downing'],
-    author_email=['garbados@gmail.com', 'mad_dev@linuxmail.org', 'b.maionedowning@gmail.com'],
+    author=['FullContact'],
+    author_email=['support@fullcontact.com'],
     description='Simple Python interface for FullContact, using Requests',
-    long_description=open('README.txt', 'r').read(),
+    long_description=open('README.md', 'r').read(),
     packages=['fullcontact'],
     zip_safe=False,
     platforms='any',
@@ -26,6 +26,7 @@ setup(
     include_package_data=True,
     tests_require=[
         'nose>=1.0',
+        'flake8'
     ],
     test_suite='nose.collector',
     classifiers=[
