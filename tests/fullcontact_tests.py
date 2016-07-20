@@ -1,5 +1,5 @@
 from fullcontact import FullContact
-from nose.tools import *
+from nose.tools import assert_equal
 
 
 class TestFullContact(object):

@@ -1,1 +1,1 @@
-from .fullcontact import FullContact
+from .fullcontact import FullContact  # noqa
