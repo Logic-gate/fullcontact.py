@@ -16,6 +16,7 @@ class FullContact(object):
         self.base_url = 'https://api.fullcontact.com/v2/'
         self.get_endpoints = {
             'person': 'person.json',
+            'company': 'company/lookup.json',
             'disposable': 'email/disposable.json',
             'name_normalizer': 'name/normalizer.json',
             'name_deducer': 'name/deducer.json',
@@ -23,7 +24,8 @@ class FullContact(object):
             'name_stats': 'name/stats.json',
             'name_parser': 'name/parser.json',
             'address_locationNormalizer': 'address/locationNormalizer.json',
-            'address_locationEnrichment': 'address/locationEnrichment.json'
+            'address_locationEnrichment': 'address/locationEnrichment.json',
+            'account_stats': 'stats.json'
         }
         self.post_endpoints = {
             'batch': 'batch.json'
