@@ -31,6 +31,10 @@ class FullContact(object):
             'batch': 'batch.json'
         }
 
+        for endpoint in self.get_endpoints:
+            method = lambda endpoint=endpoint, **kwargs: self.api_get(endpoint, **kwargs)
+            setattr(self, endpoint, method)
+
     def api_get(self, endpoint, **kwargs):
         """ Makes a FullContact API call
 

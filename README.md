@@ -19,7 +19,7 @@ Usage
 >>> fc = FullContact('your_api_key')
 
 # returns a real requests object
->>> r = fc.api_get('person', **{'email': 'you@email.com'})
+>>> r = fc.person(email='you@email.com')
 >>> r.status_code
 200
 >>> r.headers['x-rate-limit-remaining']
