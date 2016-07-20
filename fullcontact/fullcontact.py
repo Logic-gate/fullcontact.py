@@ -78,7 +78,7 @@ class FullContact(object):
         ep = self.get_endpoints[b[0]]
         qu = urllib.urlencode(b[1])
         batch_url = '{0}{1}?{2}'.format(self.base_url, ep, qu)
-        log.debug('Prepared batch url: {}'.format(batch_url))
+        log.debug('Prepared batch url: {0}'.format(batch_url))
 
         return batch_url
 
