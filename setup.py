@@ -10,13 +10,13 @@ from setuptools import setup
 
 setup(
     name='FullContact.py',
-    version='0.0.2',
-    url='https://github.com/garbados/fullcontact.py',
+    version='0.0.3',
+    url='https://github.com/fullcontact/fullcontact.py',
     license='MIT',
-    author=['Max Thayer','Amer Almadani'],
-    author_email=['garbados@gmail.com', 'mad_dev@linuxmail.org']
+    author=['FullContact'],
+    author_email=['support@fullcontact.com'],
     description='Simple Python interface for FullContact, using Requests',
-    long_description=file.read(open('README.md', 'r')),
+    long_description=open('README.md', 'r').read(),
     packages=['fullcontact'],
     zip_safe=False,
     platforms='any',
@@ -25,15 +25,17 @@ setup(
     ],
     include_package_data=True,
     tests_require=[
-        'Attest',
+        'nose>=1.0',
+        'flake8'
     ],
-    test_loader='attest:auto_reporter.test_loader',
-    test_suite='tests.fc_tests',
+    test_suite='nose.collector',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ]

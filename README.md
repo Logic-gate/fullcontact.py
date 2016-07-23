@@ -1,50 +1,48 @@
-# FullContact.py
+FullContact.py
+==============
 
-A simple Python interface for [FullContact](http://www.fullcontact.com/), using Requests.
+A Python interface for the [FullContact API](http://docs.fullcontact.com/).
 
-# Install
+Installation
+------------
 
-In terminal:
+```
+pip install fullcontact.py
+```
 
-    pip install fullcontact.py
+Usage
+-----
 
-# Usage
 
-In your Python script:
+```python
+>>> from fullcontact import FullContact
+>>> fc = FullContact('your_api_key')
 
-    from fullcontact import FullContact
+# returns a real requests object
+>>> r = fc.person(email='you@email.com')
+>>> r.status_code
+200
+>>> r.headers['x-rate-limit-remaining']
+'59'
+>>> r.json()
+{u'socialProfiles': [...], u'demographics': {...}, ... }
 
-    fc = FullContact('your_api_key')
-    person_profile = f.get('person', email='you@email.com')
-    
-    '''
-	'person'
-    'disposable'
-    'normalizer' 
-    'deducer'
-    'similarity'
-    'stats'
-    'parser' 
-    'locationNormalizer'
-    'locationEnrichment'
-    'batch'
-    '''
-    #for batch
-    
-    fc = FullContact('your_api_key')
-	batch_order = [f.makeUrl('person', 'email=you@email.com'), f.makeUrl('normalizer','q=Your name')]
-	f.postBatch(batch_order)
+# for batched calls - a list of tuples like (endpoint, {params})
+>>> batch_calls = [
+        ('disposable', {'email': 'this-is-a-fake-email@fake.com'}),
+        ('person', {'email': 'email@gmail.com'}),
+        ...
+    ]
+>>> r2 = fc.api_batch(batch_calls)
+```
 
-# FullContact API Documentation
+Tests
+-----
 
-Check out FullContact's documentation [here](http://www.fullcontact.com/developer/docs/).
+A limited test suite is available. Run with `nosetests` after installing, or if
+you're installing directly via `setup.py` you can use Nose's setuptools
+extension like so:
 
-# Tests
-
-To run the test suite:
-
-    git clone git://github.com/garbados/fullcontact.py.git
-    cd fullcontact.py
-    python setup.py test
-
-You'll be prompted for an API key. Enter a valid one, and all the tests will (as of this writing) pass.
+```
+python setup.py install nosetests
+```

@@ -2,9 +2,14 @@
 .*.swp
 *.egg
 *.egg-info
+.coverage
+.idea/
 docs/.build
 docs/_build
 build/
 dist/
 venv/
+env/
 settings.py
+example_fullcontact_output.txt
+.eggs
